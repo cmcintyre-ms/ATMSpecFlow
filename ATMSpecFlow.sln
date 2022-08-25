@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATMSpecFlow", "ATMSpecFlow\ATMSpecFlow.csproj", "{6E366345-FFF2-432D-9A0F-2BADE0A6B8D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMSpecFlow.Tests", "ATMSpecFlow.Tests\ATMSpecFlow.Tests.csproj", "{81A2F49A-0220-4F07-97AB-1D467AD1742E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E366345-FFF2-432D-9A0F-2BADE0A6B8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E366345-FFF2-432D-9A0F-2BADE0A6B8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E366345-FFF2-432D-9A0F-2BADE0A6B8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E366345-FFF2-432D-9A0F-2BADE0A6B8D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A2F49A-0220-4F07-97AB-1D467AD1742E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A2F49A-0220-4F07-97AB-1D467AD1742E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A2F49A-0220-4F07-97AB-1D467AD1742E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A2F49A-0220-4F07-97AB-1D467AD1742E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26CFB710-6A5F-4127-B673-6F2817ABCBC4}
+	EndGlobalSection
+EndGlobal
