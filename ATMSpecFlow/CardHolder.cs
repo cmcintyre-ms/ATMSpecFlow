@@ -17,49 +17,27 @@ namespace ATMSpecFlow
         public double Balance { get; set; }
         public int Pin { get; set; }
 
-        //public CardHolder(string firstName, string lastName, string cardNumber, double balance, int pin)
-        //{
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //    CardNumber = cardNumber;
-        //    Balance = balance;
-        //    Pin = pin;
-        //}
+        public CardHolder() { }
 
-        public static List<CardHolder> cardHolders = new()
+        public CardHolder(string firstName, string lastName, string cardNumber, double balance, int pin)
         {
-            new CardHolder()
-            {
-                FirstName = "Cheryl",
-                LastName = "McIntyre",
-                CardNumber = "5698563214578963",
-                Balance = 12500.50,
-                Pin = 1234
-            },
-            new CardHolder()
-            {
-                FirstName = "Joe",
-                LastName = "Bloggs",
-                CardNumber = "6985452123654785",
-                Balance = 500.00,
-                Pin = 1234
-            },
-            new CardHolder()
-            {
-                FirstName = "Jane",
-                LastName = "Doe",
-                CardNumber = "98756320145236514",
-                Balance = 60.00,
-                Pin = 1234
-            }
-        };
+            FirstName = firstName;
+            LastName = lastName;
+            CardNumber = cardNumber;
+            Balance = balance;
+            Pin = pin;
+        }
 
         public void Withdraw(double amount)
         {
-            if (amount < 0 || Balance < amount)
+            if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
-            } 
+                throw new AmountLessThanZeroException();
+            }
+            else if (Balance < amount)
+            {
+                throw new AmountCannotBeMoreThanBalanceException();
+            }
 
             Balance -= amount;
         }
@@ -68,7 +46,7 @@ namespace ATMSpecFlow
         {
             if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new AmountLessThanZeroException();
             }
 
             Balance += amount;
@@ -78,7 +56,7 @@ namespace ATMSpecFlow
         {
             if (cardNum.Length < 16 || cardNum.Length > 16)
             {
-                throw new ArgumentException("Incorrect amount of digits for card number");
+                throw new IncorrectDigitsCardNumberException();
             }
             else if (cardNum == CardNumber)
             {
@@ -93,7 +71,7 @@ namespace ATMSpecFlow
 
             if (stringPin.Length < 4 || stringPin.Length > 4)
             {
-                throw new ArgumentException("Incorrect amount of digits for PIN");
+                throw new IncorrectDigitsPinNumberException();
             }
             else if(pin == Pin)
             {
@@ -101,20 +79,6 @@ namespace ATMSpecFlow
             }
             return false;
         }
-
-        //public bool CheckForCardHolder(string cardNum)
-        //{
-        //    var result = cardHolders.Find(c => c.CardNumber == cardNum);
-
-        //    if (result != null)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
 
     }
 }

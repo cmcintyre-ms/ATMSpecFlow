@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Contracts;
 using TechTalk.SpecFlow;
 
 namespace ATMSpecFlow.Tests.StepDefinitions
@@ -29,7 +30,8 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             {
                 testUser.Withdraw(amount);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is AmountCannotBeMoreThanBalanceException ||
+                                       ex is AmountLessThanZeroException)
             {
                 testException = ex;
             }
@@ -42,7 +44,8 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             {
                 testUser.Deposit(amount);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is AmountCannotBeMoreThanBalanceException ||
+                                       ex is AmountLessThanZeroException)
             {
                 testException = ex;
             }
@@ -55,11 +58,18 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             Assert.AreEqual(amount, testUser.Balance);
         }
 
-        [Then(@"It should throw an exception")]
-        public void ThenItShouldThrowAnException()
+        [Then(@"It should throw an AmountLessThanZeroException")]
+        public void ThenItShouldThrowAnAmountLessThanZeroException()
         {
             Assert.IsNotNull(testException);
-            Assert.IsTrue(testException is ArgumentOutOfRangeException);
+            Assert.IsTrue(testException is AmountLessThanZeroException);
+        }
+
+        [Then(@"It should throw an AmountCannotBeMoreThanBalanceException")]
+        public void ThenItShouldThrowAnAmountCannotBeMoreThanBalanceException()
+        {
+            Assert.IsNotNull(testException);
+            Assert.IsTrue(testException is AmountCannotBeMoreThanBalanceException);
         }
 
         [Given(@"I have a card with number (.*)")]
@@ -75,7 +85,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             {
                 testResult = testUser.CardNumCheck(testUser.CardNumber);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is IncorrectDigitsCardNumberException)
             {
                 testException = ex;
             }
@@ -89,11 +99,13 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             Assert.IsTrue(testResult);
         }
 
-        [Then(@"I should not be able to access the ATM")]
-        public void ThenIShouldNotBeAbleToAccessTheATM()
+        [Then(@"It should throw an IncorrectDigitsCardNumberException")]
+        public void ThenItShouldThrowAnIncorrectDigitsCardNumberException()
         {
             Assert.IsNotNull(testException);
+            Assert.IsTrue(testException is IncorrectDigitsCardNumberException);
         }
+
 
         [Given(@"I have pin number (.*)")]
         public void GivenIHavePinNumber(int pin)
@@ -108,12 +120,18 @@ namespace ATMSpecFlow.Tests.StepDefinitions
             {
                 testResult = testUser.PinNumCheck(testUser.Pin);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is IncorrectDigitsPinNumberException)
             {
                 testException = ex;
             }
         }
 
+        [Then(@"It should throw an IncorrectDigitsPinNumberException")]
+        public void ThenItShouldThrowAnIncorrectDigitsPinNumberException()
+        {
+            Assert.IsNotNull(testException);
+            Assert.IsTrue(testException is IncorrectDigitsPinNumberException);
+        }
 
 
 

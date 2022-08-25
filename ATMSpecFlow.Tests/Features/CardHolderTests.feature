@@ -6,7 +6,7 @@ I expect all services within the ATM to be processed correctly
 Background:
 	Given I am a valid user of the ATM
 
-
+	# Testing Withdraw Method
 Scenario: Withdraw Money from ATM With Valid Amount
 	Given I have <account> pounds in my account
 	When I withdraw <withdraw> pounds from my account
@@ -19,19 +19,25 @@ Scenario: Withdraw Money from ATM With Valid Amount
 	| 300     | 100      | 200      |
 
 
-Scenario: Trying to withdraw an invalid amount of money from bank account
+Scenario: Trying to withdraw too much money from bank account
 	Given I have <account> pounds in my account
 	When I withdraw <withdraw> pounds from my account
-	Then It should throw an exception
+	Then It should throw an AmountCannotBeMoreThanBalanceException
 
 	Examples: 
 	| account | withdraw |
 	| 10      | 15       |
-	| 5       | 500      |
+	| 0       | 500      |
 	| 20      | 21       |
-	| 10      | -100     |
 
 
+Scenario: Trying to withdraw a negative amount of money from account
+	Given I have 0 pounds in my account
+	When I withdraw -10 pounds from my account
+	Then It should throw an AmountLessThanZeroException
+
+
+	# Testing Deposit Method
 Scenario: Deposit Money from ATM with valid amount
 	Given I have <account> pounds in my account
 	When I deposit <deposit> pounds in my account
@@ -41,32 +47,26 @@ Scenario: Deposit Money from ATM with valid amount
 	| account | deposit | expected |
 	| 100     | 1       | 101      |
 	| 200     | 10      | 210      |
-	| 300     | 100     | 400      |
 	| 0       | 5       | 5        |
 
 
 Scenario: Trying to deposit an invalid amount of money
 	Given I have 20 pounds in my account
 	When I deposit -20 pounds in my account
-	Then It should throw an exception
+	Then It should throw an AmountLessThanZeroException
 
 
+	# Testing CardNumCheck Method
 Scenario: Card number entered is valid
-	Given I have a card with number <cardNumber>
+	Given I have a card with number 1234567890123456
 	When I enter in the card details to the ATM
 	Then I should be able to access the ATM
-
-	Examples: 
-	| cardNumber       |
-	| 1234567890123456 |
-	| 4859038475612390 |
-	| 0000000000000000 |
 
 
 Scenario: Card number entered is invalid
 	Given I have a card with number <cardNumber>
 	When I enter in the card details to the ATM
-	Then I should not be able to access the ATM
+	Then It should throw an IncorrectDigitsCardNumberException
 
 	Examples: 
 	| cardNumber      |
@@ -75,22 +75,17 @@ Scenario: Card number entered is invalid
 	| 111111111111111 |
 
 
+	# Testing PinNumCheck method
 Scenario:  Pin Number entered is valid
-	Given I have pin number <pinNumber>
+	Given I have pin number 1111
 	When I enter my pin number
 	Then I should be able to access the ATM
-
-	Examples: 
-	| pinNumber |
-	| 1111      |
-	| 2222      |
-	| 3333      |
 
 
 Scenario: Pin number entered is invalid
 	Given I have pin number <pinNumber>
 	When I enter my pin number
-	Then I should not be able to access the ATM
+	Then It should throw an IncorrectDigitsPinNumberException
 
 	Examples: 
 	| pinNumber |

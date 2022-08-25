@@ -187,13 +187,13 @@ this.WithdrawMoneyFromATMWithValidAmount("300", "100", "200", ((string[])(null))
 #line hidden
         }
         
-        public virtual void TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount(string account, string withdraw, string[] exampleTags)
+        public virtual void TryingToWithdrawTooMuchMoneyFromBankAccount(string account, string withdraw, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("account", account);
             argumentsOfScenario.Add("withdraw", withdraw);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to withdraw an invalid amount of money from bank account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to withdraw too much money from bank account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -224,73 +224,60 @@ this.FeatureBackground();
  testRunner.When(string.Format("I withdraw {0} pounds from my account", withdraw), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
- testRunner.Then("It should throw an exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("It should throw an AmountCannotBeMoreThanBalanceException", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw an invalid amount of money from bank account: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw too much money from bank account: 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:withdraw", "15")]
-        public virtual void TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount_Variant0()
+        public virtual void TryingToWithdrawTooMuchMoneyFromBankAccount_10()
         {
 #line 22
-this.TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount("10", "15", ((string[])(null)));
+this.TryingToWithdrawTooMuchMoneyFromBankAccount("10", "15", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw an invalid amount of money from bank account: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw too much money from bank account: 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:withdraw", "500")]
-        public virtual void TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount_Variant1()
+        public virtual void TryingToWithdrawTooMuchMoneyFromBankAccount_0()
         {
 #line 22
-this.TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount("5", "500", ((string[])(null)));
+this.TryingToWithdrawTooMuchMoneyFromBankAccount("0", "500", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw an invalid amount of money from bank account: Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw too much money from bank account: 20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:withdraw", "21")]
-        public virtual void TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount_Variant2()
+        public virtual void TryingToWithdrawTooMuchMoneyFromBankAccount_20()
         {
 #line 22
-this.TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount("20", "21", ((string[])(null)));
+this.TryingToWithdrawTooMuchMoneyFromBankAccount("20", "21", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw an invalid amount of money from bank account: Variant 3")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Trying to withdraw a negative amount of money from account")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "10")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:withdraw", "-100")]
-        public virtual void TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount_Variant3()
+        public virtual void TryingToWithdrawANegativeAmountOfMoneyFromAccount()
         {
-#line 22
-this.TryingToWithdrawAnInvalidAmountOfMoneyFromBankAccount("10", "-100", ((string[])(null)));
-#line hidden
-        }
-        
-        public virtual void DepositMoneyFromATMWithValidAmount(string account, string deposit, string expected, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("account", account);
-            argumentsOfScenario.Add("deposit", deposit);
-            argumentsOfScenario.Add("expected", expected);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Deposit Money from ATM with valid amount", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 35
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to withdraw a negative amount of money from account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 34
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -313,13 +300,57 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+#line 35
+ testRunner.Given("I have 0 pounds in my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 36
- testRunner.Given(string.Format("I have {0} pounds in my account", account), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I withdraw -10 pounds from my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
+ testRunner.Then("It should throw an AmountLessThanZeroException", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        public virtual void DepositMoneyFromATMWithValidAmount(string account, string deposit, string expected, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("account", account);
+            argumentsOfScenario.Add("deposit", deposit);
+            argumentsOfScenario.Add("expected", expected);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Deposit Money from ATM with valid amount", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 41
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 42
+ testRunner.Given(string.Format("I have {0} pounds in my account", account), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 43
  testRunner.When(string.Format("I deposit {0} pounds in my account", deposit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 38
+#line 44
  testRunner.Then(string.Format("I should have {0} pounds left in my account", expected), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -335,7 +366,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "101")]
         public virtual void DepositMoneyFromATMWithValidAmount_100()
         {
-#line 35
+#line 41
 this.DepositMoneyFromATMWithValidAmount("100", "1", "101", ((string[])(null)));
 #line hidden
         }
@@ -349,22 +380,22 @@ this.DepositMoneyFromATMWithValidAmount("100", "1", "101", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "210")]
         public virtual void DepositMoneyFromATMWithValidAmount_200()
         {
-#line 35
+#line 41
 this.DepositMoneyFromATMWithValidAmount("200", "10", "210", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Deposit Money from ATM with valid amount: 300")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Deposit Money from ATM with valid amount: 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "300")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "300")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:deposit", "100")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "400")]
-        public virtual void DepositMoneyFromATMWithValidAmount_300()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:account", "0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:deposit", "5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "5")]
+        public virtual void DepositMoneyFromATMWithValidAmount_0()
         {
-#line 35
-this.DepositMoneyFromATMWithValidAmount("300", "100", "400", ((string[])(null)));
+#line 41
+this.DepositMoneyFromATMWithValidAmount("0", "5", "5", ((string[])(null)));
 #line hidden
         }
         
@@ -376,48 +407,6 @@ this.DepositMoneyFromATMWithValidAmount("300", "100", "400", ((string[])(null)))
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to deposit an invalid amount of money", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 47
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line hidden
-#line 48
- testRunner.Given("I have 20 pounds in my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 49
- testRunner.When("I deposit -20 pounds in my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 50
- testRunner.Then("It should throw an exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        public virtual void CardNumberEnteredIsValid(string cardNumber, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("cardNumber", cardNumber);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Card number entered is valid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -442,61 +431,27 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 54
- testRunner.Given(string.Format("I have a card with number {0}", cardNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have 20 pounds in my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 55
- testRunner.When("I enter in the card details to the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I deposit -20 pounds in my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 56
- testRunner.Then("I should be able to access the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("It should throw an AmountLessThanZeroException", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Card number entered is valid: 1234567890123456")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Card number entered is valid")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1234567890123456")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "1234567890123456")]
-        public virtual void CardNumberEnteredIsValid_1234567890123456()
+        public virtual void CardNumberEnteredIsValid()
         {
-#line 53
-this.CardNumberEnteredIsValid("1234567890123456", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Card number entered is valid: 4859038475612390")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4859038475612390")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "4859038475612390")]
-        public virtual void CardNumberEnteredIsValid_4859038475612390()
-        {
-#line 53
-this.CardNumberEnteredIsValid("4859038475612390", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Card number entered is valid: 0000000000000000")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "0000000000000000")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "0000000000000000")]
-        public virtual void CardNumberEnteredIsValid_0000000000000000()
-        {
-#line 53
-this.CardNumberEnteredIsValid("0000000000000000", ((string[])(null)));
-#line hidden
-        }
-        
-        public virtual void CardNumberEnteredIsInvalid(string cardNumber, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("cardNumber", cardNumber);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Card number entered is invalid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 65
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Card number entered is valid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 60
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -519,14 +474,56 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 66
- testRunner.Given(string.Format("I have a card with number {0}", cardNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 61
+ testRunner.Given("I have a card with number 1234567890123456", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 67
+#line 62
  testRunner.When("I enter in the card details to the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 63
+ testRunner.Then("I should be able to access the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        public virtual void CardNumberEnteredIsInvalid(string cardNumber, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("cardNumber", cardNumber);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Card number entered is invalid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 66
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 67
+ testRunner.Given(string.Format("I have a card with number {0}", cardNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 68
- testRunner.Then("I should not be able to access the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I enter in the card details to the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 69
+ testRunner.Then("It should throw an IncorrectDigitsCardNumberException", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -539,7 +536,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "1")]
         public virtual void CardNumberEnteredIsInvalid_1()
         {
-#line 65
+#line 66
 this.CardNumberEnteredIsInvalid("1", ((string[])(null)));
 #line hidden
         }
@@ -551,7 +548,7 @@ this.CardNumberEnteredIsInvalid("1", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "111111")]
         public virtual void CardNumberEnteredIsInvalid_111111()
         {
-#line 65
+#line 66
 this.CardNumberEnteredIsInvalid("111111", ((string[])(null)));
 #line hidden
         }
@@ -563,18 +560,20 @@ this.CardNumberEnteredIsInvalid("111111", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:cardNumber", "111111111111111")]
         public virtual void CardNumberEnteredIsInvalid_111111111111111()
         {
-#line 65
+#line 66
 this.CardNumberEnteredIsInvalid("111111111111111", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void PinNumberEnteredIsValid(string pinNumber, string[] exampleTags)
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pin Number entered is valid")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
+        public virtual void PinNumberEnteredIsValid()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("pinNumber", pinNumber);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pin Number entered is valid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 77
+#line 79
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -597,53 +596,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 78
- testRunner.Given(string.Format("I have pin number {0}", pinNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+ testRunner.Given("I have pin number 1111", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 79
+#line 81
  testRunner.When("I enter my pin number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 80
+#line 82
  testRunner.Then("I should be able to access the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pin Number entered is valid: 1111")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1111")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "1111")]
-        public virtual void PinNumberEnteredIsValid_1111()
-        {
-#line 77
-this.PinNumberEnteredIsValid("1111", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pin Number entered is valid: 2222")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2222")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "2222")]
-        public virtual void PinNumberEnteredIsValid_2222()
-        {
-#line 77
-this.PinNumberEnteredIsValid("2222", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pin Number entered is valid: 3333")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "CardHolderTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3333")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "3333")]
-        public virtual void PinNumberEnteredIsValid_3333()
-        {
-#line 77
-this.PinNumberEnteredIsValid("3333", ((string[])(null)));
-#line hidden
         }
         
         public virtual void PinNumberEnteredIsInvalid(string pinNumber, string[] exampleTags)
@@ -652,7 +615,7 @@ this.PinNumberEnteredIsValid("3333", ((string[])(null)));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("pinNumber", pinNumber);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pin number entered is invalid", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 89
+#line 85
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -675,14 +638,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 90
+#line 86
  testRunner.Given(string.Format("I have pin number {0}", pinNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 91
+#line 87
  testRunner.When("I enter my pin number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 92
- testRunner.Then("I should not be able to access the ATM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 88
+ testRunner.Then("It should throw an IncorrectDigitsPinNumberException", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -695,7 +658,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "1")]
         public virtual void PinNumberEnteredIsInvalid_1()
         {
-#line 89
+#line 85
 this.PinNumberEnteredIsInvalid("1", ((string[])(null)));
 #line hidden
         }
@@ -707,7 +670,7 @@ this.PinNumberEnteredIsInvalid("1", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "11")]
         public virtual void PinNumberEnteredIsInvalid_11()
         {
-#line 89
+#line 85
 this.PinNumberEnteredIsInvalid("11", ((string[])(null)));
 #line hidden
         }
@@ -719,7 +682,7 @@ this.PinNumberEnteredIsInvalid("11", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:pinNumber", "111")]
         public virtual void PinNumberEnteredIsInvalid_111()
         {
-#line 89
+#line 85
 this.PinNumberEnteredIsInvalid("111", ((string[])(null)));
 #line hidden
         }
