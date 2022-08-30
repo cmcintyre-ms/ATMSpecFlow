@@ -8,9 +8,9 @@ namespace ATMSpecFlow.Server.Repositories
 {
     public interface ICardHolderRepo
     {
-        IEnumerable<CardHolder> GetCardHolderInfo(string cardNum);
+        CardHolder GetCardHolderInfo(string cardNum);
 
-        void GetBalanceForCardHolder(CardHolder cardHolder);
+        double GetBalanceForCardHolder(CardHolder cardHolder);
 
         void UpdateCardHolderLastName(CardHolder cardHolder, string newLastName);
 

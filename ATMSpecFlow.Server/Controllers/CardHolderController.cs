@@ -23,18 +23,86 @@ namespace ATMSpecFlow.Server.Controllers
         [HttpGet]
         public IActionResult GetCardHolder(string cardNumber)
         {
-            try
+            var cardHolder = _cardHolderRepo.GetCardHolderInfo(cardNumber);
+            if (cardHolder == null)
             {
-                var cardHolder = _cardHolderRepo.GetCardHolderInfo(cardNumber);
-                if (cardHolder == null)
-                {
-                    return new NoContentResult();
-                }
-                return Ok(cardHolder);
+                return NoContent();
             }
-            catch
+            return Ok(cardHolder);
+
+        }
+
+        [HttpGet]
+        public IActionResult GetBalance(CardHolder cardHolder)
+        {
+            var result = _cardHolderRepo.GetBalanceForCardHolder(cardHolder);
+            if (result != null)
             {
-                return new BadRequestResult();
+                return Ok(result);
+            }
+            return NoContent();
+        }
+
+        [HttpPut]
+        public IActionResult UpdateCardNumber(CardHolder cardHolder)
+        {
+            if (cardHolder is null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                try
+                {
+                    _cardHolderRepo.UpdateCardHolderCardNumber(cardHolder);
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
+            }
+        }
+
+        [HttpPut]
+        public IActionResult UpdatePinNumber(CardHolder cardHolder)
+        {
+            if (cardHolder is null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                try
+                {
+                    _cardHolderRepo.UpdateCardHolderPinNumber(cardHolder);
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
+            }
+        }
+
+        [HttpPut]
+        public IActionResult UpdateLastName(CardHolder cardHolder, string lastName)
+        {
+            if (cardHolder is null || lastName is null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                try
+                {
+                    _cardHolderRepo.UpdateCardHolderLastName(cardHolder, lastName);
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
             }
         }
     }
