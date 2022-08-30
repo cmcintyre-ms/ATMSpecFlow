@@ -1,3 +1,5 @@
+using ATMSpecFlow.Server;
+using ATMSpecFlow.Server.Services;
 using System;
 using System.Diagnostics.Contracts;
 using TechTalk.SpecFlow;
@@ -8,6 +10,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
     public class CardHolderTestsStepDefinitions
     {
         public CardHolder testUser;
+        public CardHolderService testService = new CardHolderService();
         public Exception testException;
         public bool testResult;
 
@@ -28,7 +31,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
         {
             try
             {
-                testUser.Withdraw(amount);
+                testService.Withdraw(testUser, amount);
             }
             catch (Exception ex) when (ex is AmountCannotBeMoreThanBalanceException ||
                                        ex is AmountLessThanZeroException)
@@ -42,7 +45,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
         {
             try
             {
-                testUser.Deposit(amount);
+                testService.Deposit(testUser, amount);
             }
             catch (Exception ex) when (ex is AmountCannotBeMoreThanBalanceException ||
                                        ex is AmountLessThanZeroException)
@@ -83,7 +86,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
         {
             try
             {
-                testResult = testUser.CardNumCheck(testUser.CardNumber);
+                testResult = testService.CardNumCheck(testUser, testUser.CardNumber);
             }
             catch (Exception ex) when (ex is IncorrectDigitsCardNumberException)
             {
@@ -118,7 +121,7 @@ namespace ATMSpecFlow.Tests.StepDefinitions
         {
             try
             {
-                testResult = testUser.PinNumCheck(testUser.Pin);
+                testResult = testService.PinNumCheck(testUser, testUser.Pin);
             }
             catch (Exception ex) when (ex is IncorrectDigitsPinNumberException)
             {

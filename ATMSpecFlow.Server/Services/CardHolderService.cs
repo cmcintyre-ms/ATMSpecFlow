@@ -1,71 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
-namespace ATMSpecFlow
+namespace ATMSpecFlow.Server.Services
 {
-    public class CardHolder
+    public class CardHolderService
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string CardNumber { get; set; }
-        public double Balance { get; set; }
-        public int Pin { get; set; }
-
-        public CardHolder() { }
-
-        public CardHolder(string firstName, string lastName, string cardNumber, double balance, int pin)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            CardNumber = cardNumber;
-            Balance = balance;
-            Pin = pin;
-        }
-
-        public void Withdraw(double amount)
+        public void Withdraw(CardHolder cardHolder, double amount)
         {
             if (amount < 0)
             {
                 throw new AmountLessThanZeroException();
             }
-            else if (Balance < amount)
+            else if (cardHolder.Balance < amount)
             {
                 throw new AmountCannotBeMoreThanBalanceException();
             }
 
-            Balance -= amount;
+            cardHolder.Balance -= amount;
         }
 
-        public void Deposit(double amount)
+        public void Deposit(CardHolder cardHolder, double amount)
         {
             if (amount < 0)
             {
                 throw new AmountLessThanZeroException();
             }
 
-            Balance += amount;
+            cardHolder.Balance += amount;
         }
 
-        public bool CardNumCheck(string cardNum)
+        public bool CardNumCheck(CardHolder cardHolder, string cardNum)
         {
             if (cardNum.Length < 16 || cardNum.Length > 16)
             {
                 throw new IncorrectDigitsCardNumberException();
             }
-            else if (cardNum == CardNumber)
+            else if (cardNum == cardHolder.CardNumber)
             {
                 return true;
             }
             return false;
         }
 
-        public bool PinNumCheck(int pin)
+        public bool PinNumCheck(CardHolder cardHolder, int pin)
         {
             string stringPin = pin.ToString();
 
@@ -73,12 +54,11 @@ namespace ATMSpecFlow
             {
                 throw new IncorrectDigitsPinNumberException();
             }
-            else if(pin == Pin)
+            else if (pin == cardHolder.Pin)
             {
                 return true;
             }
             return false;
         }
-
     }
 }
